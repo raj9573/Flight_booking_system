@@ -24,6 +24,7 @@ from rest_framework.permissions import AllowAny
 
 
 class UserCreationView(APIView):
+    # This View is used to perform the user creation
     permission_classes = [AllowAny]
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -34,6 +35,7 @@ class UserCreationView(APIView):
 
 
 class UserLoginView(TokenObtainPairView):
+    #This view is used to perform the login operation and generate the unique token for the user 
     def post(self, request, *args, **kwargs):
         username = request.data.get("username")
         password = request.data.get("password")
@@ -64,6 +66,7 @@ class UserLoginView(TokenObtainPairView):
 
 
 class FlightViewSet(viewsets.ModelViewSet):
+    # to perfrom crud operations on flights and filter operations.
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     # permission_classes =  [IsAuthenticated]
