@@ -3,7 +3,7 @@ from django.urls import path,include
 
 from rest_framework.routers import DefaultRouter 
 
-from .views import FlightViewSet, TicketViewSet, UserCreationView, UserLoginView
+from .views import FlightViewSet, TicketViewSet, UserCreationView, UserLoginView #, GetUserFromTokenView
 
 router = DefaultRouter()
 
@@ -25,7 +25,9 @@ urlpatterns = [
 
     path('user-login/', UserLoginView.as_view(), name='custom_login'),
     
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Token refresh endpoint
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  
+
+    # path('GetUserFromTokenView/',GetUserFromTokenView.as_view()),
 
 
 ]

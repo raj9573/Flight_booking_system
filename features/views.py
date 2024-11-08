@@ -22,6 +22,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from rest_framework.permissions import AllowAny
 
+from rest_framework_simplejwt.tokens import AccessToken
 
 class UserCreationView(APIView):
     # This View is used to perform the user creation
@@ -78,8 +79,37 @@ class FlightViewSet(viewsets.ModelViewSet):
 
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
+    # Ticket.objects.get(id=1)
     serializer_class = TicketSerializer
 
     filter_backends = [filters.SearchFilter]
+    #this is used to filter the data
+    #the data is 
     search_fields = ['user__username']
 
+
+
+
+# class GetUserFromTokenView(APIView):
+#     def get(self, request, *args, **kwargs):
+        
+#         auth_header = request.headers.get('Authorization')
+        
+#         if auth_header and auth_header.startswith('Bearer '):
+#             token = auth_header.split(' ')[1]  
+
+#             try:
+                
+#                 access_token = AccessToken(token)
+                
+#                 print("the access token is ",access_token)
+
+#                 print("the type of atoken is ", type(access_token))
+                
+#                 user_id = access_token['user_id'] 
+                
+#                 return Response({"user_id": user_id}, status=status.HTTP_200_OK)
+#             except Exception as e:
+#                 return Response({"detail": "Invalid or expired token."}, status=status.HTTP_401_UNAUTHORIZED)
+
+#         return Response({"detail": "Authorization header missing or malformed."}, status=status.HTTP_400_BAD_REQUEST)
