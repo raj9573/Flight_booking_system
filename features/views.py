@@ -84,6 +84,7 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     filter_backends = [filters.SearchFilter]
     #this is used to filter the data
+    #the data is 
     search_fields = ['user__username']
 
 
