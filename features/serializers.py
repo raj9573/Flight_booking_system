@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Flight, Ticket
+from .models import Flight, Ticket, Employee
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 class FlightSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,5 +21,6 @@ class TicketSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model =  User
+        model =  Employee
         fields = ['email','username','password','id']
+        

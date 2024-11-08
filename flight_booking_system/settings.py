@@ -90,6 +90,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 
 }   
+AUTH_USER_MODEL =  'features.Employee'
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),  # you can customize this timings based on our own preferences
